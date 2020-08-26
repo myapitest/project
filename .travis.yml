@@ -5,5 +5,3 @@ install:
   - make install
 script:
   - make test
-after_success:
-  - curl -k -u $ZEROBUGUID:$ZEROBUGTOKEN --request POST -H "Content-Type:application/json" -d '{"pit":"131","targetid":"frJVd1W2qx5v4ziw8sti1598404211","ci":"Travis CI","tipo":"14"}' https://zerobug.co/ScanTarget/
