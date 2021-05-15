@@ -17,3 +17,7 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'Invoke-RestMethod -uri "https://fitoxs.com/ScanTarget/" -ContentType "application/json; charset=UTF-8"  -Method POST -Headers @{ Authorization = "Basic $([System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($env:FITOXSUID +":"+$env:FITOXSTOKEN)))"} -Body $(@{pit="310";targetid="OQrYofJqIt864AfZbFf81621077683";ci="Azure DevOps";tipo="4"}| ConvertTo-Json)'
